@@ -1,15 +1,28 @@
-.example-card {
-    max-width: 350px;
-
-    margin-top: 50px;
-    flex: auto;
-    border-radius: 20px;
-    background-color: white;
-  }
-.h1{
+.header{
   margin-bottom: auto;
 }
-.toolbar{
+
+.card-section {
+  display: flex;
+  overflow-x: auto;
+}
+
+.card-card {
+  max-width: 350px;
+  margin-top: 50px;
+  flex: auto;
+  border-radius: 20px;
+  background-color: white;
+  margin: 0 5px 0 5px;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navbar{
   min-height: 200px !important;
   height: 300px !important;
   max-height: 400px !important;  
