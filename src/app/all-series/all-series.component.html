@@ -1,0 +1,25 @@
+<h2 class="mt-3 text-center" style="font-family: Comic Sans MS; font-weight: bold;">All Series</h2>
+<div class="container">
+    <div class="row pb-4">
+        <div class="col-md-3 mt-4" *ngFor="let i of allSeries">
+            <mat-card class="card"
+                style="background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.7)),url('https://t3.ftcdn.net/jpg/02/66/06/18/360_F_266061854_ELjfKSRqdoyhmc9D2WHMZfHCEVvBbMef.jpg');background-position: center; background-size: cover; background-repeat: no-repeat;">
+                <mat-card-header class="text-center">
+                    <mat-card-title style="font-size: 16px; margin-bottom: 20px;">{{i.name}}</mat-card-title>
+                    <mat-card-subtitle style="font-size: 14px;">{{i.startDate}} to {{i.endDate}}</mat-card-subtitle>
+                </mat-card-header>
+                <hr>
+                <mat-card-content style="font-size: 17px;">
+                    <ul>
+                        <li>Test-:{{i.test}}</li>
+                        <li>ODI-:{{i.odi}}</li>
+                        <li>T20-:{{i.t20}}</li>
+                    </ul>
+                </mat-card-content>
+                <mat-card-actions class="text-center">
+                    <button mat-button>Total Matches in tour-:{{i.test+i.odi+i.t20}}</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
