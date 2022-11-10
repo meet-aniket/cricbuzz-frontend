@@ -1,0 +1,83 @@
+<!-- <iframe id="cricketapi_widget" src="http://widget.cricketapi.com/widget_v2/series/pslt20_2018/stats/?key=APP-KEY&show_points_table=1" frameborder="0" allowtransparency="true" xtarget="_blank" style="border:0px;min-height: 400px;min-width: 350px;margin-left: auto;margin-right: auto;display: block;width: 100%;">Loading…</iframe> -->
+
+<div style="background-color: rgb(0, 140, 400, 0.773);  min-height: 200px !important; max-height: 400px !important;">
+    <div class="container">
+        <div class="card-section">
+            <div *ngFor="let i of allCurrentMatches">
+                <mat-card class="card-card">
+                    <span style="position: absolute; top: 5px; right: 3px;">
+                        <mat-card-subtitle>
+                            <mat-icon>notifications</mat-icon>
+                        </mat-card-subtitle>
+                    </span>
+                    <mat-card-title class="text-center" style="font-size: 15px;">
+                        <h4 *ngIf="i.name"><b>{{i.name.substr(0, i.name.indexOf(',')) }}</b></h4>
+                    </mat-card-title>
+                    <mat-card-subtitle class="text-center" style="font-size: 15px;">
+                        <h4 *ngIf="i.date"><u>{{i.date }}</u></h4>
+                    </mat-card-subtitle>
+                    <mat-card-content>
+                        <div>
+                            <div *ngIf="i.teamInfo" style="display: inline-block;">
+                                <div *ngIf="i.teamInfo.length>0">
+                                    <img width="25" height="25" class="ds-mr-2"
+                                        src="{{i.teamInfo[0].img}}">&nbsp;&nbsp;&nbsp;&nbsp;{{i.teamInfo[0].shortname}}
+                                </div>
+                            </div>
+                            <div *ngIf="i.score" style="display: inline-block; margin-left: 70px;">
+                                <div *ngIf="i.score.length>0 && i.teamInfo[0].name==i.score[0].inning.substr(0, i.score[0].inning.indexOf(' '))">
+                                    <p>{{i.score[0].r}}/{{i.score[0].w}} ({{i.score[0].o}} overs)</p>
+                                </div>
+                                <div *ngIf="i.score.length>1 && i.teamInfo[0].name==i.score[1].inning.substr(0, i.score[1].inning.indexOf(' '))">
+                                    <p>{{i.score[1].r}}/{{i.score[1].w}} ({{i.score[1].o}} overs)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="!i.teamInfo">
+                            {{i.teamInfo[0].shortname}}
+                            <div *ngIf="i.score">
+                                <div *ngIf="i.score.length>0 && i.teamInfo[0].name==i.score[0].inning.substr(0, i.score[0].inning.indexOf(' '))">
+                                    <p>{{i.score[0].r}}/{{i.score[0].w}} ({{i.score[0].o}} overs)</p>
+                                </div>
+                                <div *ngIf="i.score.length>1 && i.teamInfo[0].name==i.score[1].inning.substr(0, i.score[1].inning.indexOf(' '))">
+                                    <p>{{i.score[1].r}}/{{i.score[1].w}} ({{i.score[1].o}} overs)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div *ngIf="i.teamInfo" style="display: inline-block;">
+                                <div *ngIf="i.teamInfo.length>1">
+                                    <img width="25" height="25" class="ds-mr-2"
+                                        src="{{i.teamInfo[1].img}}">&nbsp;&nbsp;&nbsp;&nbsp;{{i.teamInfo[1].shortname}}
+                                </div>
+                            </div>
+                            <div *ngIf="i.score" style="display: inline-block; margin-left: 70px;">
+                                <div *ngIf="i.score.length>0 && i.teamInfo[1].name==i.score[0].inning.substr(0, i.score[0].inning.indexOf(' '))">
+                                    <p>{{i.score[0].r}}/{{i.score[0].w}} ({{i.score[0].o}} overs)</p>
+                                </div>
+                                <div *ngIf="i.score.length>1 && i.teamInfo[1].name==i.score[1].inning.substr(0, i.score[1].inning.indexOf(' '))">
+                                    <p>{{i.score[1].r}}/{{i.score[1].w}} ({{i.score[1].o}} overs)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="!i.teamInfo">
+                            {{i.teamInfo[1].shortname}}
+                            <div *ngIf="i.score" style="display: inline-block; margin-left: 70px;">
+                                <div *ngIf="i.score.length>0 && i.teamInfo[1].name==i.score[0].inning.substr(0, i.score[0].inning.indexOf(' '))">
+                                    <p>{{i.score[0].r}}/{{i.score[0].w}} ({{i.score[0].o}} overs)</p>
+                                </div>
+                                <div *ngIf="i.score.length>1 && i.teamInfo[1].name==i.score[1].inning.substr(0, i.score[1].inning.indexOf(' '))">
+                                    <p>{{i.score[1].r}}/{{i.score[1].w}} ({{i.score[1].o}} overs)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                    <hr>
+                    <mat-card-content class="text-center">
+                        <p *ngIf="i.status"><b>{{i.status}}</b></p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

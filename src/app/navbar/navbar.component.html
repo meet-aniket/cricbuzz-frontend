@@ -1,0 +1,37 @@
+<mat-toolbar class="mat-toolbar" *ngIf="loginService.isLoginIn() else elseBlock">
+    <span class="icon-login f" style="font-size: 25px;">CricBuzz</span>
+    <div class="spacer"></div>
+    <a mat-button routerLink="/admin-dashboard/team-ranking">
+        <h2 style="font-family: Comic Sans MS;"><b>Team Ranking</b></h2>
+    </a>
+    <a mat-button routerLink="/admin-dashboard/player-ranking">
+        <h2 style="font-family: Comic Sans MS;"><b>Players Ranking</b></h2>
+    </a>
+    <div class="spacer"></div>
+    <a mat-button (click)="logout()">
+        <h2 style="font-family: Comic Sans MS;"><b>Logout</b></h2>
+    </a>
+</mat-toolbar>
+
+<ng-template #elseBlock>
+    <mat-toolbar class="mat-toolbar">
+        <span class="icon-login f" routerLink="/dashboard/products" style="font-size: 25px;">CricBuzz</span>
+        <div class="spacer"></div>
+        <a mat-button routerLink="/allmatches">
+            <h2 style="font-family: Comic Sans MS;"><b>Matches</b></h2>
+        </a>
+        <a mat-button routerLink="/allseries">
+            <h2 style="font-family: Comic Sans MS;"><b>Series</b></h2>
+        </a>
+        <a mat-button routerLink="/playerinformation">
+            <h2 style="font-family: Comic Sans MS;"><b>Players</b></h2>
+        </a>
+        <a mat-button routerLink="/ranking">
+            <h2 style="font-family: Comic Sans MS;"><b>Rankings</b></h2>
+        </a>
+        <div class="spacer"></div>
+        <a mat-button routerLink="/login">
+            <h2 style="font-family: Comic Sans MS;"><b>Login</b></h2>
+        </a>
+    </mat-toolbar>
+</ng-template>
