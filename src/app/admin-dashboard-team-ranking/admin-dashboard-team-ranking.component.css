@@ -1,0 +1,26 @@
+.cen1 {
+
+    margin-top: 30px;
+    font-size: larger;
+    margin-left: 10px;
+
+}
+
+.tab {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.demo-table {
+
+    width: 70%;
+    margin: auto;
+    border-radius: 40px;
+    border: 2px solid #949292;
+    height: auto;
+}
+  
+  .example-full-width {
+    width: auto;
+  }
+  

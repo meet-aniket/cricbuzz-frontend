@@ -1,0 +1,194 @@
+<div class="text-center">
+    <button (click)="check5()" class="cen1" mat-raised-button style='background-color: {{colorF1}};'>TEST</button>
+    <button (click)="check6()" class="cen1" mat-raised-button style='background-color: {{colorF2}};'>ODI</button>
+    <button (click)="check7()" class="cen1" mat-raised-button style='background-color: {{colorF3}};'>T20</button>
+
+    <!-- Teams -->
+    <!-- Test -->
+    <div class="tab" *ngIf="ODI==false && T20==false">
+        <table mat-table [dataSource]="testteam" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Rank" [(ngModel)]="element.ranking" name="element.ranking" [value]="element.ranking" #element.ranking>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="teamName">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Team Name" [(ngModel)]="element.teamName" name="element.teamName" [value]="element.teamName" #element.teamName>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="ratings">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rating </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Ratings"  [(ngModel)]="element.ratings" name="element.ratings" [value]="element.ratings" #element.ratings>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Points"  [(ngModel)]="element.points" name="element.points" [value]="element.points" #element.points>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="editTeam">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Update </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;"> <button type="submit"
+                        (click)="onSubmitTest(element.ranking,element.teamName,element.ratings,element.points)"
+                        mat-raised-button color="primary" style="margin-top: -20px">Save</button> </td>
+            </ng-container>
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Delete </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;"> <button type="submit"
+                        (click)="deleteElementTestTeam(element.ranking)" mat-raised-button color="warn"
+                        style="margin-top: -20px; margin-left: 4px;">Delete</button> </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedTeams"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedTeams;"></tr>
+        </table>
+        <button (click)="addElementTestTeam()" class="cen1 container mat-elevation-z8" mat-raised-button
+            style='width: 180px; background-color: rgb(255, 0, 140); color: white;'>Add New Row</button>
+        <button (click)="deleteElementTestTeamAll()" class="cen1 container mat-elevation-z8" mat-raised-button
+            style='width: 180px; background-color: rgb(255, 247, 0);'>Delete All</button>
+    </div>
+
+
+    <!-- Odi -->
+    <div class="tab" *ngIf="test==false && T20==false">
+        <table mat-table [dataSource]="oditeam" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Rank" [(ngModel)]="element.ranking" name="element.ranking" [value]="element.ranking" #element.ranking>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="teamName">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Team Name" [(ngModel)]="element.teamName" name="element.teamName" [value]="element.teamName" #element.teamName>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="ratings">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rating </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Ratings"  [(ngModel)]="element.ratings" name="element.ratings" [value]="element.ratings" #element.ratings>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Points"  [(ngModel)]="element.points" name="element.points" [value]="element.points" #element.points>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="editTeam">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Update </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;"> <button type="submit"
+                        (click)="onSubmitODI(element.ranking,element.teamName,element.ratings,element.points)"
+                        mat-raised-button color="primary" style="margin-top: -20px">Save</button> </td>
+            </ng-container>
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Delete </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;"> <button type="submit"
+                        (click)="deleteElementOdiTeam(element.ranking)" mat-raised-button color="warn"
+                        style="margin-top: -20px; margin-left: 4px;">Delete</button> </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedTeams"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedTeams;"></tr>
+        </table>
+        <button (click)="addElementOdiTeam()" class="cen1 container mat-elevation-z8" mat-raised-button
+            style='width: 180px; background-color: rgb(255, 0, 140); color: white;'>Add New Row</button>
+        <button (click)="deleteElementOdiTeamAll()" class="cen1 container mat-elevation-z8" mat-raised-button
+            style='width: 180px; background-color: rgb(255, 247, 0);'>Delete All</button>
+    </div>
+
+    <!-- T20 -->
+    <div class="tab" *ngIf="test==false && ODI==false">
+        <table mat-table [dataSource]="t20team" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Rank" [(ngModel)]="element.ranking" name="element.ranking" [value]="element.ranking" #element.ranking>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="teamName">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Team Name" [(ngModel)]="element.teamName" name="element.teamName" [value]="element.teamName" #element.teamName>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="ratings">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rating </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Ratings"  [(ngModel)]="element.ratings" name="element.ratings" [value]="element.ratings" #element.ratings>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-form-field class="example-full-width" appearance="fill" style="text-align: center;">
+                        <input matInput placeholder="Enter Points"  [(ngModel)]="element.points" name="element.points" [value]="element.points" #element.points>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="editTeam">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Update </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;"> <button type="submit"
+                        (click)="onSubmitT20(element.ranking,element.teamName,element.ratings,element.points)"
+                        mat-raised-button color="primary" style="margin-top: -20px">Save</button> </td>
+            </ng-container>
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Delete </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;"> <button type="submit"
+                        (click)="deleteElementT20Team(element.ranking)" mat-raised-button color="warn"
+                        style="margin-top: -20px; margin-left: 4px;">Delete</button> </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedTeams"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedTeams;"></tr>
+        </table>
+        <button (click)="addElementT20Team()" class="cen1 container mat-elevation-z8" mat-raised-button
+            style='width: 180px; background-color: rgb(255, 0, 140); color: white;'>Add New Row</button>
+        <button (click)="deleteElementT20TeamAll()" class="cen1 container mat-elevation-z8" mat-raised-button
+            style='width: 180px; background-color: rgb(255, 247, 0);'>Delete All</button>
+    </div>
+    <br>
+</div>

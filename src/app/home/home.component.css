@@ -1,15 +1,21 @@
-.card {
+.card-section {
+    display: flex;
+    overflow:auto;
+}
+
+.card-card {
     border-radius: 15px;
-    background-color: #fff;
+    background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition: 0.3s ease-in-out;
     cursor: pointer;
-    min-height: 380px;
-    min-width: 180px;
+    width: 311px;
+    min-height: 290px;
+    flex: auto;
+    margin: 15px 8px 50px 5px;
   }
   
-  .card:hover {
+  .card-card:hover {
     transition: 0.3s ease-in-out;
     transform: scale(1.04);
   }
-  /* style="background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.7)),url('../assets/matches.jpg')" */

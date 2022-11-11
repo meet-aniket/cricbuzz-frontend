@@ -1,0 +1,443 @@
+<div class="text-center">
+    <button (click)="check1()" class="cen1" mat-raised-button style='background-color: {{colorH1}};'>Batsmen
+        Ranking</button>
+    <button (click)="check2()" class="cen1" mat-raised-button style='background-color: {{colorH2}};'>Bowlers
+        Ranking</button>
+    <button (click)="check3()" class="cen1" mat-raised-button style='background-color: {{colorH3}};'>All Rounders
+        Ranking</button>
+    <button (click)="check4()" class="cen1" mat-raised-button style='background-color: {{colorH4}};'>Teams Ranking
+    </button>
+
+    <div class="text-center">
+        <button (click)="check5()" class="cen1" mat-raised-button style='background-color: {{colorF1}};'>TEST</button>
+        <button (click)="check6()" class="cen1" mat-raised-button style='background-color: {{colorF2}};'>ODI</button>
+        <button (click)="check7()" class="cen1" mat-raised-button style='background-color: {{colorF3}};'>T20</button>
+    </div>
+
+    <!-- Batsman -->
+    <!-- test -->
+    <div class="tab" *ngIf="Batsman ==true && T20==false && ODI==false">
+        <table mat-table [dataSource]="testbat" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Player </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.name}} <span style="font-weight:500;font-size: 13px;">({{element.team}})</span> </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2" src='https://countryflagsapi.com/png/{{element.team}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedPlayers"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedPlayers;"></tr>
+        </table>
+    </div>
+
+    <!-- ODI -->
+    <div class="tab" *ngIf="Batsman ==true && T20==false && test==false">
+        <table mat-table [dataSource]="odibat" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Player </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.name}}
+                    <span style="font-size: 13px;">({{element.team}})</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2" src='https://countryflagsapi.com/png/{{element.team}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedPlayers"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedPlayers;"></tr>
+        </table>
+    </div>
+
+    <!-- T20 Batsmen -->
+    <div class="tab" *ngIf="Batsman ==true && ODI==false && test==false">
+        <table mat-table [dataSource]="t20bat" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Player </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.name}} <span style="font-size: 13px;">({{element.team}})</span> </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2" src='https://countryflagsapi.com/png/{{element.team}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedPlayers"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedPlayers;"></tr>
+        </table>
+    </div>
+
+    <!-- Bowlers -->
+    <!-- Test -->
+    <div class="tab" *ngIf="Bowler ==true && ODI==false && T20==false">
+        <table mat-table [dataSource]="testbowl" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Player </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.name}} <span style="font-size: 13px;">({{element.team}})</span> </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2" src='https://countryflagsapi.com/png/{{element.team}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedPlayers"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedPlayers;"></tr>
+        </table>
+    </div>
+
+
+    <!-- ODI -->
+    <div class="tab" *ngIf="Bowler ==true && test==false && T20==false">
+        <table mat-table [dataSource]="odibowl" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Player </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.name}} <span style="font-size: 13px;">({{element.team}})</span> </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2" src='https://countryflagsapi.com/png/{{element.team}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedPlayers"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedPlayers;"></tr>
+        </table>
+    </div>
+
+    <!-- t20 -->
+    <div class="tab" *ngIf="Bowler ==true && ODI==false && test==false">
+        <table mat-table [dataSource]="t20bowl" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Player </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.name}} <span style="font-size: 13px;">({{element.team}})</span> </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2" src='https://countryflagsapi.com/png/{{element.team}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedPlayers"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedPlayers;"></tr>
+        </table>
+    </div>
+
+    <!-- Allrounders -->
+    <!-- test -->
+    <div class="tab" *ngIf="Allrounder ==true && ODI==false && T20==false">
+        <table mat-table [dataSource]="testall" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Player </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.name}} <span style="font-size: 13px;">({{element.team}})</span> </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2" src='https://countryflagsapi.com/png/{{element.team}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedPlayers"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedPlayers;"></tr>
+        </table>
+    </div>
+
+    <!-- Odi -->
+    <div class="tab" *ngIf="Allrounder ==true && T20==false && test==false">
+        <table mat-table [dataSource]="odiall" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Player </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.name}} <span style="font-size: 13px;">({{element.team}})</span> </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2" src='https://countryflagsapi.com/png/{{element.team}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedPlayers"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedPlayers;"></tr>
+        </table>
+    </div>
+
+    <!-- t20 -->
+    <div class="tab" *ngIf="Allrounder ==true && ODI==false && test==false">
+        <table mat-table [dataSource]="t20all" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Player </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.name}} <span style="font-size: 13px;">({{element.team}})</span> </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2" src='https://countryflagsapi.com/png/{{element.team}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedPlayers"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedPlayers;"></tr>
+        </table>
+    </div>
+
+
+    <!-- Teams -->
+    <!-- Test -->
+    <div class="tab" *ngIf="teams ==true && ODI==false && T20==false">
+        <table mat-table [dataSource]="testteam" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="teamName">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team Name </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500"> {{element.teamName}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2"
+                        src='https://countryflagsapi.com/png/{{element.teamName}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="ratings">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rating </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ratings}} </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedTeams"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedTeams;"></tr>
+        </table>
+    </div>
+
+
+    <!-- Odi -->
+    <div class="tab" *ngIf="teams ==true && test==false && T20==false">
+        <table mat-table [dataSource]="oditeam" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="teamName">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team Name </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.teamName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2"
+                        src='https://countryflagsapi.com/png/{{element.teamName}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="ratings">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rating </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ratings}} </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedTeams"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedTeams;"></tr>
+        </table>
+    </div>
+
+    <!-- T20 -->
+    <div class="tab" *ngIf="teams ==true && test==false && ODI==false">
+        <table mat-table [dataSource]="t20team" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="ranking">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rank</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ranking}} </td>
+            </ng-container>
+            <ng-container matColumnDef="teamName">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team Name</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.teamName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="team">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Team </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    <img width="40" height="30" class="ds-mr-2"
+                        src='https://countryflagsapi.com/png/{{element.teamName}}' alt="Not Found">
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="ratings">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Rating </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.ratings}} </td>
+            </ng-container>
+            <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size: 15px; font-weight: bold;">
+                    Points </th>
+                <td mat-cell *matCellDef="let element" style="text-align: center; font-weight:500; font-size: 15px;">
+                    {{element.points}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedTeams"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedTeams;"></tr>
+        </table>
+    </div>
+    <br>
+</div>
